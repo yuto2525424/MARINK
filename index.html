@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <meta
+    name="description"
+    content="MARINK｜海の生き物を、もっと面白く。"
+  >
+
+  <meta
+    name="theme-color"
+    content="#062f57"
+  >
+
+  <title>MARINK｜海の生き物を、もっと面白く。</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+ <header class="app-header">
+
+  <a
+    href="index.html"
+    class="header-logo-link"
+  >
+
+    <img
+      src="images/marink-logo-wide.png"
+      alt="MARINK"
+      class="header-logo"
+    >
+
+  </a>
+
+
+  <div class="header-actions">
+
+    <a
+      href="cart.html"
+      class="header-cart-button"
+      aria-label="カートを見る"
+    >
+
+      <svg
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+
+        <path
+          d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L20.5 8H7"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+
+        <circle
+          cx="10"
+          cy="19"
+          r="1.2"
+          fill="currentColor"
+        ></circle>
+
+        <circle
+          cx="17"
+          cy="19"
+          r="1.2"
+          fill="currentColor"
+        ></circle>
+
+      </svg>
+
+
+      <span
+        class="cart-count-badge"
+      ></span>
+
+    </a>
+
+  </div>
+
+</header>
+
+
+
+
+ <div class="header-actions">
+
+  <a
+    href="cart.html"
+    class="header-cart-button"
+    aria-label="カートを見る"
+  >
+
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path
+        d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L20.5 8H7"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></path>
+
+      <circle
+        cx="10"
+        cy="19"
+        r="1.2"
+        fill="currentColor"
+      ></circle>
+
+      <circle
+        cx="17"
+        cy="19"
+        r="1.2"
+        fill="currentColor"
+      ></circle>
+    </svg>
+
+    <span
+      class="cart-count-badge"
+    ></span>
+
+  </a>
+
+
+  <button
+    class="menu-button"
+    id="menuButton"
+    type="button"
+    aria-label="メニューを開く"
+    aria-expanded="false"
+  >
+
+    <span></span>
+    <span></span>
+    <span></span>
+
+  </button>
+
+</div>
+
+
+  </header>
+
+
+
+  <!-- =========================
+       DRAWER
+  ========================== -->
+
+  <nav
+    class="drawer"
+    id="drawer"
+    aria-hidden="true"
+  >
+
+    <div class="drawer-top">
+
+      <strong>
+        MENU
+      </strong>
+
+      <button
+        id="drawerClose"
+        class="drawer-close"
+        type="button"
+        aria-label="メニューを閉じる"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <a href="#home">
+      <strong>HOME</strong>
+      <span>ホーム</span>
+    </a>
+
+    <a href="#shop">
+      <strong>SHOP</strong>
+      <span>商品を見る</span>
+    </a>
+
+    <a href="#projects">
+      <strong>PROJECTS</strong>
+      <span>活動を見る</span>
+    </a>
+
+    <a href="#news">
+      <strong>NEWS</strong>
+      <span>最新情報</span>
+    </a>
+
+    <a href="#about">
+      <strong>ABOUT</strong>
+      <span>MARINKについて</span>
+    </a>
+
+  </nav>
+
+
+  <div
+    class="drawer-overlay"
+    id="drawerOverlay"
+  ></div>
+
+
+
+  <!-- =========================
+       APP
+  ========================== -->
+
+  <main class="app-main">
+
+
+    <!-- =========================
+         HOME
+    ========================== -->
+
+    <section
+      class="home"
+      id="home"
+    >
+
+      <div class="home-card">
+
+        <img
+          src="images/marink-logo-wide.png"
+          alt="MARINK 海の生き物を、もっと面白く。"
+          class="home-logo"
+        >
+
+
+        <p class="home-copy">
+          知る。潜る。遊ぶ。つくる。
+        </p>
+
+
+        <div class="quick-menu">
+
+
+          <a
+            href="#shop"
+            class="quick-button quick-shop"
+          >
+
+            <span class="quick-symbol">
+              SHOP
+            </span>
+
+            <span>
+              商品を見る
+            </span>
+
+          </a>
+
+
+          <a
+            href="#projects"
+            class="quick-button"
+          >
+
+            <span class="quick-symbol">
+              PROJECTS
+            </span>
+
+            <span>
+              活動を見る
+            </span>
+
+          </a>
+
+
+          <a
+            href="#news"
+            class="quick-button"
+          >
+
+            <span class="quick-symbol">
+              NEWS
+            </span>
+
+            <span>
+              最新情報
+            </span>
+
+          </a>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SHOP
+    ========================== -->
+
+    <section
+      class="app-section"
+      id="shop"
+    >
+
+      <div class="section-title-row">
+
+        <div>
+
+          <span class="section-label">
+            SHOP
+          </span>
+
+          <h2>
+            MARINK SHOP
+          </h2>
+
+        </div>
+
+
+        <a
+          href="acrylic-keyholders.html"
+          class="more-link"
+        >
+          すべて見る ›
+        </a>
+
+      </div>
+
+
+      <p class="section-description">
+        海やダイビングをもっと楽しむための商品。
+      </p>
+
+
+      <div
+        class="horizontal-scroll"
+        id="productList"
+      ></div>
+
+    </section>
+
+
+
+    <!-- =========================
+         PICK UP
+    ========================== -->
+
+    <section class="app-section">
+
+      <div class="section-title-row">
+
+        <div>
+
+          <span class="section-label">
+            PICK UP
+          </span>
+
+          <h2>
+            今、見てほしいもの
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="horizontal-scroll pickup-scroll"
+        id="pickupList"
+      ></div>
+
+
+      <div
+        class="slide-dots"
+        id="pickupDots"
+      ></div>
+
+    </section>
+
+
+
+    <!-- =========================
+         PROJECTS
+    ========================== -->
+
+    <section
+      class="app-section"
+      id="projects"
+    >
+
+      <div class="section-title-row">
+
+        <div>
+
+          <span class="section-label">
+            PROJECTS
+          </span>
+
+          <h2>
+            MARINKの活動
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <p class="section-description">
+        海をもっと面白くするためのプロジェクト。
+      </p>
+
+
+      <div
+        class="projects-grid"
+        id="projectsGrid"
+      ></div>
+
+    </section>
+
+
+
+    <!-- =========================
+         NEWS
+    ========================== -->
+
+    <section
+      class="app-section"
+      id="news"
+    >
+
+      <div class="section-title-row">
+
+        <div>
+
+          <span class="section-label">
+            NEWS
+          </span>
+
+          <h2>
+            最新情報
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="news-list"
+        id="newsList"
+      ></div>
+
+    </section>
+
+
+
+    <!-- =========================
+         ABOUT
+    ========================== -->
+
+    <section
+      class="about-area"
+      id="about"
+    >
+
+      <div class="about-card">
+
+        <span class="about-label">
+          ABOUT MARINK
+        </span>
+
+
+        <h2>
+          海をもっと身近に、<br>
+          もっと面白く。
+        </h2>
+
+
+        <p>
+          MARINKは、海の生き物、ダイビング、
+          ゲーム、ガイドなどを通して、
+          海をもっと楽しむきっかけをつくるプロジェクトです。
+        </p>
+
+
+        <a
+          href="#home"
+          class="about-button"
+        >
+          MARINK
+          <span>›</span>
+        </a>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         INSTAGRAM
+    ========================== -->
+
+    <section class="app-section">
+
+      <div class="section-title-row">
+
+        <div>
+
+          <span class="section-label">
+            INSTAGRAM
+          </span>
+
+          <h2>
+            海の生き物を発信中
+          </h2>
+
+        </div>
+
+      </div>
+
+
+   <a
+  href="https://www.instagram.com/marink._.2026/"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="instagram-card"
+>
+
+  <div class="instagram-icon">
+    ◎
+  </div>
+
+  <div class="instagram-info">
+
+    <strong>
+      @marink._.2026
+    </strong>
+
+    <span>
+      海の生き物クイズ＆雑学
+    </span>
+
+  </div>
+
+  <span class="instagram-next">
+    ›
+  </span>
+
+</a>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="app-footer">
+
+      <img
+        src="images/marink-logo-wide.png"
+        alt="MARINK"
+        class="footer-logo"
+      >
+
+
+      <p>
+        海の生き物を、もっと面白く。
+      </p>
+
+
+      <small>
+        © MARINK
+      </small>
+
+    </footer>
+
+
+  </main>
+
+
+
+  <!-- =========================
+       BOTTOM NAV
+  ========================== -->
+
+  <nav class="bottom-nav">
+
+    <a
+      href="#home"
+      class="bottom-nav-item active"
+      data-section="home"
+    >
+      <strong>⌂</strong>
+      <span>HOME</span>
+    </a>
+
+
+    <a
+      href="#shop"
+      class="bottom-nav-item"
+      data-section="shop"
+    >
+      <strong>▢</strong>
+      <span>SHOP</span>
+    </a>
+
+
+    <a
+      href="#projects"
+      class="bottom-nav-item"
+      data-section="projects"
+    >
+      <strong>◇</strong>
+      <span>PROJECTS</span>
+    </a>
+
+
+    <a
+      href="#news"
+      class="bottom-nav-item"
+      data-section="news"
+    >
+      <strong>●</strong>
+      <span>NEWS</span>
+    </a>
+
+
+    <a
+      href="#about"
+      class="bottom-nav-item"
+      data-section="about"
+    >
+      <strong>i</strong>
+      <span>ABOUT</span>
+    </a>
+
+  </nav>
+
+
+
+  <!-- DATA -->
+
+ <script src="products-data.js"></script>
+<script src="projects-data.js"></script>
+<script src="news-data.js"></script>
+
+<script src="cart-utils.js"></script>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>

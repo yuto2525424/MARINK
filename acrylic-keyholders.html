@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <meta
+    name="description"
+    content="MARINK 海の生き物アクリルキーホルダー"
+  >
+
+  <meta
+    name="theme-color"
+    content="#062f57"
+  >
+
+  <title>
+    海の生き物 アクリルキーホルダー｜MARINK
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+</head>
+
+
+<body>
+
+
+  <!-- HEADER -->
+
+ <header class="app-header">
+
+  <a
+    href="index.html"
+    class="header-logo-link"
+    aria-label="MARINK ホーム"
+  >
+
+    <img
+      src="images/marink-logo-wide.png"
+      alt="MARINK"
+      class="header-logo"
+    >
+
+  </a>
+
+
+  <div class="header-actions">
+
+    <a
+      href="cart.html"
+      class="header-cart-button"
+      aria-label="カートを見る"
+    >
+
+      <svg
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+
+        <path
+          d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L20.5 8H7"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+
+        <circle
+          cx="10"
+          cy="19"
+          r="1.2"
+          fill="currentColor"
+        ></circle>
+
+        <circle
+          cx="17"
+          cy="19"
+          r="1.2"
+          fill="currentColor"
+        ></circle>
+
+      </svg>
+
+
+      <span
+        class="cart-count-badge"
+      ></span>
+
+    </a>
+
+  </div>
+
+</header>
+
+
+
+  <main class="app-main">
+
+
+    <!-- PAGE TITLE -->
+
+    <section class="shop-page-header">
+
+      <span class="section-label">
+        MARINK GOODS
+      </span>
+
+      <h1>
+        海の生き物<br>
+        アクリルキーホルダー
+      </h1>
+
+      <p>
+        海の生き物たちを、
+        MARINKオリジナルの水彩イラストで。
+        好きな生き物を見つけてください。
+      </p>
+
+    </section>
+
+
+
+    <!-- FILTER -->
+
+    <section class="shop-filter">
+
+      <div
+        class="category-scroll"
+        id="keyholderCategories"
+      ></div>
+
+    </section>
+
+
+
+    <!-- PRODUCTS -->
+
+    <section class="shop-products">
+
+      <div class="shop-products-header">
+
+        <div>
+
+          <span class="section-label">
+            LINE UP
+          </span>
+
+          <h2>
+            生き物を選ぶ
+          </h2>
+
+        </div>
+
+
+        <span
+          class="product-count"
+          id="keyholderCount"
+        ></span>
+
+      </div>
+
+
+      <div
+        class="shop-grid"
+        id="keyholderGrid"
+      ></div>
+
+    </section>
+
+
+
+    <!-- BACK -->
+
+    <section class="app-section">
+
+      <a
+        href="index.html#shop"
+        class="shop-back-button"
+      >
+
+        <span>
+          ←
+        </span>
+
+        <span>
+          MARINK SHOPへ戻る
+        </span>
+
+      </a>
+
+    </section>
+
+
+  </main>
+
+<div
+  class="cart-modal-overlay"
+  id="cartModalOverlay"
+></div>
+
+
+<div
+  class="cart-modal"
+  id="cartModal"
+>
+
+  <div
+    class="cart-modal-handle"
+  ></div>
+
+  <div
+    id="cartModalContent"
+  ></div>
+
+</div>
+
+
+
+
+
+ <script
+  src="acrylic-keyholders-data.js"
+></script>
+
+<script
+  src="cart-utils.js"
+></script>
+
+<script
+  src="acrylic-keyholders.js"
+></script>
+
+
+</body>
+
+</html>
