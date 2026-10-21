@@ -1,20 +1,30 @@
-const KEYHOLDER_BASE_PRICE = 800;
-const ENGRAVING_PRICE = 300;
+const KEYHOLDER_BASE_PRICE = 349;
 
+const ENGRAVING_PRICE = 50;
+const SCIENTIFIC_PRICE = 50;
 
-const commonKeyholderOptions = [
+function makeKeyholderOptions(scientificName) {
 
-  {
-    id: "engraving",
-    name: "裏面に名前を彫る",
-    price: ENGRAVING_PRICE,
-    type: "text",
-    placeholder: "彫刻する名前を入力",
-    maxLength: 12
-  }
+  return [
+    {
+      id: "engraving",
+      name: "裏面に名前を入れる",
+      price: ENGRAVING_PRICE,
+      type: "text",
+      placeholder: "名前を入力（12文字以内）",
+      maxLength: 12
+    },
 
-];
+    {
+      id: "scientific",
+      name: "学名を入れる",
+      price: SCIENTIFIC_PRICE,
+      type: "fixed",
+      value: scientificName
+    }
+  ];
 
+}
 
 const acrylicKeyholdersData = [
 
@@ -27,7 +37,7 @@ const acrylicKeyholdersData = [
     status: "準備中",
     image: "images/keyholders/shikoku-suzumedai.png",
     description: "シコクスズメダイをモチーフにしたMARINKオリジナルアクリルキーホルダー。",
-    options: commonKeyholderOptions
+   options: makeKeyholderOptions("Chromis margaritifer")
   },
 
   {
@@ -39,7 +49,7 @@ const acrylicKeyholdersData = [
     status: "準備中",
     image: "images/keyholders/oyabiccha.png",
     description: "オヤビッチャをモチーフにしたMARINKオリジナルアクリルキーホルダー。",
-    options: commonKeyholderOptions
+   options: makeKeyholderOptions("Abudefduf vaigiensis")
   },
 
   {
@@ -51,7 +61,7 @@ const acrylicKeyholdersData = [
     status: "準備中",
     image: "images/keyholders/aohana-tenjikudai.png",
     description: "アオハナテンジクダイをモチーフにしたMARINKオリジナルアクリルキーホルダー。",
-    options: commonKeyholderOptions
+    options: makeKeyholderOptions("Ostorhinchus apogonoides")
   },
 
   {
@@ -63,7 +73,7 @@ const acrylicKeyholdersData = [
     status: "準備中",
     image: "images/keyholders/kitsuneme-nejirinbou.png",
     description: "キツネメネジリンボウをモチーフにしたMARINKオリジナルアクリルキーホルダー。",
-    options: commonKeyholderOptions
+   options: makeKeyholderOptions("Stonogobiops pentafasciata")
   },
 
   {
@@ -75,7 +85,7 @@ const acrylicKeyholdersData = [
     status: "準備中",
     image: "images/keyholders/nanyouhagi.png",
     description: "ナンヨウハギをモチーフにしたMARINKオリジナルアクリルキーホルダー。",
-    options: commonKeyholderOptions
+    options: makeKeyholderOptions("Paracanthurus hepatus")
   },
 
   {
@@ -87,7 +97,7 @@ const acrylicKeyholdersData = [
     status: "準備中",
     image: "images/keyholders/tenguhagi.png",
     description: "テングハギをモチーフにしたMARINKオリジナルアクリルキーホルダー。",
-    options: commonKeyholderOptions
+   options: makeKeyholderOptions("Naso unicornis")
   }
 
 ];

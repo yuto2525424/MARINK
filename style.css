@@ -2810,6 +2810,38 @@ img {
 }
 
 
+/* =========================================
+   MARINK LEGAL PAGE
+========================================= */
+
+.legal-information {
+  color: #153249;
+}
+
+.legal-information h2 {
+  margin-top: 22px;
+  padding-bottom: 7px;
+
+  border-bottom: 1px solid #e0e7eb;
+
+  color: #062f57;
+
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.legal-information p {
+  margin-top: 9px;
+
+  color: #526a7a;
+
+  font-size: 12px;
+  line-height: 1.9;
+
+  overflow-wrap: anywhere;
+}
+
+
 
 
 

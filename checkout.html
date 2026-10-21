@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta name="theme-color" content="#062f57">
+
+  <title>ご注文内容の確認｜MARINK</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ヘッダー -->
+  <header class="app-header">
+
+    <a
+      href="index.html"
+      class="header-logo-link"
+      aria-label="MARINK ホーム"
+    >
+      <img
+        src="images/marink-logo-wide.png"
+        alt="MARINK"
+        class="header-logo"
+      >
+    </a>
+
+    <a
+      href="cart.html"
+      class="header-cart-button"
+      aria-label="カートに戻る"
+    >
+      ←
+    </a>
+
+  </header>
+
+
+  <main class="app-main">
+
+    <!-- タイトル -->
+    <section class="shop-page-header">
+
+      <span class="section-label">
+        ORDER CONFIRMATION
+      </span>
+
+      <h1>ご注文内容の確認</h1>
+
+      <p>
+        商品・オプション・送料をご確認ください。
+      </p>
+
+    </section>
+
+
+    <!-- 注文内容 -->
+    <section class="cart-page">
+
+      <h2 style="
+        margin-bottom:12px;
+        font-size:18px;
+        color:#062f57;
+      ">
+        ご注文商品
+      </h2>
+
+      <div id="checkoutItems"></div>
+
+      <div
+        id="checkoutSummary"
+        class="cart-summary"
+      ></div>
+
+      <a
+        href="cart.html"
+        class="shop-back-button"
+        style="margin-top:20px;"
+      >
+        ← カートに戻って変更する
+      </a>
+<a
+  href="legal.html"
+  style="
+    display:block;
+    margin-top:18px;
+    text-align:center;
+    color:#078fbd;
+    font-size:12px;
+    text-decoration:underline;
+  "
+>
+  特定商取引法に基づく表記
+</a>
+
+
+
+
+
+
+
+
+
+
+    </section>
+
+  </main>
+
+
+  <!-- JavaScript -->
+  <script src="cart-utils.js"></script>
+  <script src="checkout.js"></script>
+
+</body>
+</html>

@@ -714,10 +714,10 @@ function setupDrawer() {
       "menuButton"
     );
 
-  const menu =
-    document.getElementById(
-      "drawerMenu"
-    );
+ const menu =
+  document.getElementById(
+    "drawer"
+  );
 
   const close =
     document.getElementById(

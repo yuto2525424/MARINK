@@ -34,35 +34,26 @@
   <!-- =========================
        HEADER
   ========================== -->
+<header class="app-header">
 
- <header class="app-header">
+  <a href="index.html"
+     class="header-logo-link"
+     aria-label="MARINK ホーム">
 
-  <a
-    href="index.html"
-    class="header-logo-link"
-  >
-
-    <img
-      src="images/marink-logo-wide.png"
-      alt="MARINK"
-      class="header-logo"
-    >
+    <img src="images/marink-logo-wide.png"
+         alt="MARINK"
+         class="header-logo">
 
   </a>
 
-
   <div class="header-actions">
 
-    <a
-      href="cart.html"
-      class="header-cart-button"
-      aria-label="カートを見る"
-    >
+    <a href="cart.html"
+       class="header-cart-button"
+       aria-label="カートを見る">
 
-      <svg
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-      >
+      <svg viewBox="0 0 24 24"
+           aria-hidden="true">
 
         <path
           d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L20.5 8H7"
@@ -70,101 +61,37 @@
           stroke="currentColor"
           stroke-width="1.8"
           stroke-linecap="round"
-          stroke-linejoin="round"
-        ></path>
+          stroke-linejoin="round">
+        </path>
 
-        <circle
-          cx="10"
-          cy="19"
-          r="1.2"
-          fill="currentColor"
-        ></circle>
+        <circle cx="10" cy="19" r="1.2"
+                fill="currentColor"></circle>
 
-        <circle
-          cx="17"
-          cy="19"
-          r="1.2"
-          fill="currentColor"
-        ></circle>
+        <circle cx="17" cy="19" r="1.2"
+                fill="currentColor"></circle>
 
       </svg>
 
-
-      <span
-        class="cart-count-badge"
-      ></span>
+      <span class="cart-count-badge"></span>
 
     </a>
+
+    <button
+      class="menu-button"
+      id="menuButton"
+      type="button"
+      aria-label="メニューを開く"
+      aria-expanded="false">
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </button>
 
   </div>
 
 </header>
-
-
-
-
- <div class="header-actions">
-
-  <a
-    href="cart.html"
-    class="header-cart-button"
-    aria-label="カートを見る"
-  >
-
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-    >
-      <path
-        d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L20.5 8H7"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1.8"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      ></path>
-
-      <circle
-        cx="10"
-        cy="19"
-        r="1.2"
-        fill="currentColor"
-      ></circle>
-
-      <circle
-        cx="17"
-        cy="19"
-        r="1.2"
-        fill="currentColor"
-      ></circle>
-    </svg>
-
-    <span
-      class="cart-count-badge"
-    ></span>
-
-  </a>
-
-
-  <button
-    class="menu-button"
-    id="menuButton"
-    type="button"
-    aria-label="メニューを開く"
-    aria-expanded="false"
-  >
-
-    <span></span>
-    <span></span>
-    <span></span>
-
-  </button>
-
-</div>
-
-
-  </header>
-
 
 
   <!-- =========================
@@ -593,14 +520,26 @@
       >
 
 
-      <p>
-        海の生き物を、もっと面白く。
-      </p>
+  <p>
+  海の生き物を、もっと面白く。
+</p>
 
+<a
+  href="legal.html"
+  style="
+    display:inline-block;
+    margin-top:15px;
+    color:#ffffff;
+    font-size:12px;
+    text-decoration:underline;
+  "
+>
+  特定商取引法に基づく表記
+</a>
 
-      <small>
-        © MARINK
-      </small>
+<small>
+  © MARINK
+</small>
 
     </footer>
 

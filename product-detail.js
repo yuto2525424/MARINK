@@ -229,11 +229,10 @@ function renderProductDetail() {
     );
 
 
-  renderOptions(
-    product,
-    optionsContainer
-  );
-
+  renderKeyholderOptions(
+  product,
+  optionsContainer
+);
 
   let quantity = 1;
 
@@ -337,12 +336,12 @@ function renderProductDetail() {
       "click",
       () => {
 
-        const cartItem =
-          buildCartItem(
-            product,
-            quantity,
-            container
-          );
+       const cartItem =
+  buildKeyholderCartItem(
+    product,
+    quantity,
+    container
+  );
 
 
         if (!cartItem) return;

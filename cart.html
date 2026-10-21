@@ -30,32 +30,55 @@
 
 <body>
 
+<header class="app-header">
 
-  class="header-cart-button active"
+  <a href="index.html"
+     class="header-logo-link"
+     aria-label="MARINK ホーム">
 
-    <a
-      href="index.html"
-      class="header-logo-link"
-    >
+    <img src="images/marink-logo-wide.png"
+         alt="MARINK"
+         class="header-logo">
 
-      <img
-        src="images/marink-logo-wide.png"
-        alt="MARINK"
-        class="header-logo"
-      >
+  </a>
+
+  <div class="header-actions">
+
+    <a href="cart.html"
+       class="header-cart-button active"
+       aria-label="カートを見る">
+
+      <svg viewBox="0 0 24 24"
+           aria-hidden="true">
+
+        <path
+          d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L20.5 8H7"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round">
+        </path>
+
+        <circle cx="10" cy="19" r="1.2"
+                fill="currentColor"></circle>
+
+        <circle cx="17" cy="19" r="1.2"
+                fill="currentColor"></circle>
+
+      </svg>
+
+      <span class="cart-count-badge"></span>
 
     </a>
 
-  </header>
+  </div>
 
+</header>
 
+<main class="app-main">
 
-  <main class="app-main">
-
-
-    <section
-      class="shop-page-header"
-    >
+<section class="shop-page-header">
 
       <span
         class="section-label"

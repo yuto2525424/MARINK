@@ -59,11 +59,12 @@ function renderCart() {
     `;
 
 
-    summary.innerHTML =
-      "";
+summary.innerHTML =
+  "";
 
+updateCartBadge();
 
-    return;
+return;
 
   }
 
@@ -213,56 +214,83 @@ function renderCart() {
   setupCartButtons();
 
 
-  summary.innerHTML = `
 
-    <div
-      class="cart-summary-row"
-    >
+const price = getMarinkCartPricing();
 
+
+
+summary.innerHTML = `
+
+  <div class="cart-summary-row">
+    <span>商品点数</span>
+    <strong>${price.count}点</strong>
+  </div>
+
+ 
+  ${price.set5 > 0 ? `
+    <div class="cart-summary-row">
       <span>
-        商品点数
+        5個セット割引（¥1,599 × ${price.set5}）
       </span>
-
       <strong>
-        ${getCartCount()}点
+        ${formatYen(1599 * price.set5)}
       </strong>
-
     </div>
+  ` : ""}
 
-
-    <div
-      class="cart-summary-row total"
-    >
-
+  ${price.set3 > 0 ? `
+    <div class="cart-summary-row">
       <span>
-        商品合計
+        3個セット割引（¥999 × ${price.set3}）
       </span>
-
       <strong>
-        ${formatYen(
-          getCartTotal()
-        )}
+        ${formatYen(999 * price.set3)}
       </strong>
-
     </div>
+  ` : ""}
+
+  ${price.single > 0 ? `
+    <div class="cart-summary-row">
+      <span>
+        単品（¥349 × ${price.single}）
+      </span>
+      <strong>
+        ${formatYen(349 * price.single)}
+      </strong>
+    </div>
+  ` : ""}
 
 
-    <p
-      class="cart-shipping-note"
-    >
-      送料は購入手続き時に確定します。
-    </p>
+  <div class="cart-summary-row">
+    <span>裏面オプション</span>
+    <strong>${formatYen(price.optionTotal)}</strong>
+  </div>
 
+  <div class="cart-summary-row">
+    <span>送料（全国一律）</span>
+    <strong>${formatYen(price.shipping)}</strong>
+  </div>
 
-    <button
-      type="button"
-      class="buy-button disabled"
-      disabled
-    >
-      購入手続きへ（準備中）
-    </button>
+  <div class="cart-summary-row total">
+    <span>お支払い合計（税込）</span>
+    <strong>${formatYen(price.total)}</strong>
+  </div>
 
-  `;
+  <p class="cart-shipping-note">
+    複数購入の場合は、最もお得なセット価格を自動適用しています。
+  </p>
+
+ <a
+  href="checkout.html"
+  class="buy-button"
+>
+  ご注文内容を確認する
+</a>
+
+`;
+
+updateCartBadge();
+
 
 }
 

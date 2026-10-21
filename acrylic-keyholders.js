@@ -538,12 +538,10 @@ function openCartModal(product) {
   `;
 
 
-  renderOptions(
-    product,
-    document.getElementById(
-      "modalOptions"
-    )
-  );
+ renderKeyholderOptions(
+  product,
+  document.getElementById("modalOptions")
+);
 
 
   let quantity = 1;
@@ -660,12 +658,12 @@ function openCartModal(product) {
       "click",
       () => {
 
-        const result =
-          buildCartItem(
-            product,
-            quantity,
-            content
-          );
+   const result =
+  buildKeyholderCartItem(
+    product,
+    quantity,
+    content
+  );
 
 
         if (!result) return;
