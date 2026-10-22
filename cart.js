@@ -120,20 +120,28 @@ return;
 
       card.innerHTML = `
 
-        <div
-          class="cart-item-image"
-        >
+        
+        <div class="cart-item-image">
 
-          <img
-            src="${escapeHTML(
-              item.image
-            )}"
-            alt="${escapeHTML(
-              item.name
-            )}"
-          >
+          ${
+            item.image
+
+              ? `
+                <img
+                  src="${escapeHTML(item.image)}"
+                  alt="${escapeHTML(item.name)}"
+                >
+              `
+
+              : `
+                <div class="keyholder-image-placeholder">
+                  画像準備中
+                </div>
+              `
+          }
 
         </div>
+
 
 
         <div

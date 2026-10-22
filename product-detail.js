@@ -76,20 +76,28 @@ function renderProductDetail() {
     </a>
 
 
-    <div
-      class="detail-image"
-    >
+  
+    <div class="detail-image">
 
-      <img
-        src="${escapeHTML(
-          product.image
-        )}"
-        alt="${escapeHTML(
-          product.name
-        )}"
-      >
+      ${
+        product.image
+
+          ? `
+            <img
+              src="${escapeHTML(product.image)}"
+              alt="${escapeHTML(product.name)}"
+            >
+          `
+
+          : `
+            <div class="keyholder-image-placeholder">
+              画像準備中
+            </div>
+          `
+      }
 
     </div>
+
 
 
     <div
@@ -99,9 +107,9 @@ function renderProductDetail() {
       <span
         class="section-label"
       >
-        ${escapeHTML(
-          product.category
-        )}
+    ${escapeHTML(
+  product.seriesCode || product.category
+)}
       </span>
 
 

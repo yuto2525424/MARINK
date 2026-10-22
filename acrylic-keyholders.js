@@ -242,9 +242,17 @@ function renderKeyholders(
       );
 
 
-      imageBox.appendChild(
+           imageBox.appendChild(
         image
       );
+
+    } else {
+
+      imageBox.innerHTML = `
+        <div class="keyholder-image-placeholder">
+          画像準備中
+        </div>
+      `;
 
     }
 
@@ -268,9 +276,9 @@ function renderKeyholders(
       <p
         class="product-category"
       >
-        ${escapeHTML(
-          item.category
-        )}
+       ${escapeHTML(
+  item.seriesCode || item.category
+)}
       </p>
 
       <h3

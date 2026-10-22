@@ -88,14 +88,20 @@ function renderCheckout() {
     }).join("");
 
 
-    const imageHTML = item.image
-      ? `
-        <img
-          src="${escapeKeyholderHTML(item.image)}"
-          alt="${escapeKeyholderHTML(item.name)}"
-        >
-      `
-      : "MARINK";
+   
+const imageHTML = item.image
+  ? `
+    <img
+      src="${escapeKeyholderHTML(item.image)}"
+      alt="${escapeKeyholderHTML(item.name)}"
+    >
+  `
+  : `
+    <div class="keyholder-image-placeholder">
+      画像準備中
+    </div>
+  `;
+
 
 
     return `

@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>MARINK ADMIN｜注文管理</title>
+
+  <style>
+    * { box-sizing:border-box; }
+    [hidden] { display:none !important; }
+
+    body {
+      margin:0;
+      background:#edf2f5;
+      color:#153249;
+      font-family:"Hiragino Sans",Meiryo,sans-serif;
+    }
+
+    header {
+      background:#062f57;
+      color:white;
+      padding:18px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    header h1 { margin:0; font-size:19px; }
+    header small { color:#a9cddc; }
+
+    main {
+      max-width:1100px;
+      padding:22px 15px 70px;
+      margin:auto;
+    }
+
+    .card {
+      background:white;
+      border:1px solid #e0e7eb;
+      border-radius:17px;
+      padding:20px;
+      margin-bottom:15px;
+    }
+
+    .login-card {
+      max-width:420px;
+      margin:45px auto;
+    }
+
+    h2 { margin:0 0 15px; font-size:19px; }
+    h3 { margin:0 0 9px; font-size:15px; }
+
+    label { display:block; margin:12px 0; }
+
+    input,select {
+      width:100%;
+      padding:12px;
+      border:1px solid #cbd7df;
+      border-radius:10px;
+      font:inherit;
+      background:white;
+    }
+
+    button {
+      padding:10px 15px;
+      border:0;
+      border-radius:10px;
+      background:#062f57;
+      color:white;
+      font:inherit;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    button:disabled { opacity:.45; cursor:default; }
+
+    .secondary {
+      background:#e7eff4;
+      color:#062f57;
+    }
+
+    .stats {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:10px;
+      margin-bottom:15px;
+    }
+
+    .stat {
+      background:white;
+      padding:16px;
+      border-radius:14px;
+    }
+
+    .stat span { color:#718391; font-size:12px; }
+    .stat strong { display:block; font-size:25px; }
+
+    .columns {
+      display:grid;
+      grid-template-columns:330px minmax(0,1fr);
+      gap:15px;
+      align-items:start;
+    }
+
+    .order-button {
+      display:block;
+      width:100%;
+      text-align:left;
+      padding:15px;
+      margin-top:8px;
+      background:#f3f7fa;
+      color:#153249;
+      line-height:1.7;
+    }
+
+    .order-button:hover { background:#e1eef5; }
+
+    .detail-row {
+      padding:10px 0;
+      border-bottom:1px solid #e0e7eb;
+      overflow-wrap:anywhere;
+    }
+
+    .detail-row span {
+      display:block;
+      color:#718391;
+      font-size:11px;
+    }
+
+    .item {
+      padding:14px;
+      margin:10px 0;
+      border:1px solid #dce6ed;
+      border-radius:12px;
+    }
+
+    .item-title { font-weight:800; }
+    .item-option { color:#078fbd; margin:6px 0; }
+
+    .actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:10px;
+      align-items:center;
+    }
+
+    .message {
+      color:#9c493e;
+      font-size:13px;
+      margin:12px 0;
+    }
+
+    @media(max-width:720px) {
+      .columns { grid-template-columns:1fr; }
+      .stats { gap:6px; }
+      .stat { padding:12px; }
+      .stat strong { font-size:21px; }
+    }
+
+    @media print {
+      header,.stats,#orderSearch,#orderList,
+      #logoutButton,.actions { display:none !important; }
+      .columns { display:block; }
+      .card { border:0; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div>
+      <small>MARINK PRIVATE</small>
+      <h1>注文管理システム</h1>
+    </div>
+    <button id="logoutButton" class="secondary" hidden>
+      ログアウト
+    </button>
+  </header>
+
+  <main>
+    <p id="systemMessage">初期設定を確認しています。</p>
+
+    <section id="loginPanel" class="card login-card" hidden>
+      <h2>管理者ログイン</h2>
+      <p>MARINK管理者のみ利用できます。</p>
+
+      <form id="loginForm">
+        <label>
+          メールアドレス
+          <input id="loginEmail" type="email"
+                 autocomplete="username" required>
+        </label>
+
+        <label>
+          パスワード
+          <input id="loginPassword" type="password"
+                 autocomplete="current-password" required>
+        </label>
+
+        <button type="submit">ログイン</button>
+      </form>
+
+      <p id="loginMessage" class="message"></p>
+    </section>
+
+    <section id="adminPanel" hidden>
+      <div class="stats">
+        <div class="stat">
+          <span>支払済み注文</span>
+          <strong id="totalOrders">0</strong>
+        </div>
+        <div class="stat">
+          <span>未発送</span>
+          <strong id="pendingOrders">0</strong>
+        </div>
+        <div class="stat">
+          <span>発送済み</span>
+          <strong id="shippedOrders">0</strong>
+        </div>
+      </div>
+
+      <div class="columns">
+        <section class="card">
+          <h2>注文一覧</h2>
+          <input id="orderSearch"
+                 placeholder="注文番号・購入者で検索">
+          <div id="orderList"></div>
+          <button id="refreshButton" class="secondary"
+                  style="margin-top:15px">
+            最新情報に更新
+          </button>
+        </section>
+
+        <section class="card">
+          <h2>注文詳細</h2>
+          <div id="orderDetail">
+            左側の注文を選択してください。
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
