@@ -548,3 +548,173 @@ function getMarinkCartPricing() {
 
 
 
+
+
+
+
+/* =========================================
+   MARINK SHOP FEATURES
+========================================= */
+
+// お気に入り保存先
+const MARINK_FAVORITES_KEY = "marinkFavoritesV1";
+
+// お気に入りを取得
+function getMarinkFavoriteIds() {
+  try {
+    const saved = JSON.parse(
+      localStorage.getItem(MARINK_FAVORITES_KEY) || "[]"
+    );
+
+    return Array.isArray(saved) ? saved : [];
+  } catch {
+    return [];
+  }
+}
+
+// お気に入りの追加・解除
+function toggleMarinkFavorite(productId) {
+  const favorites = getMarinkFavoriteIds();
+  const exists = favorites.includes(productId);
+
+  const updated = exists
+    ? favorites.filter(id => id !== productId)
+    : [...favorites, productId];
+
+  try {
+    localStorage.setItem(
+      MARINK_FAVORITES_KEY,
+      JSON.stringify(updated)
+    );
+  } catch {
+    // 保存できない環境では状態を保持しない
+  }
+
+  return !exists;
+}
+
+
+/* 次のセット価格までの案内 */
+function getMarinkNextSetMessage() {
+
+  const count = getCartCount();
+
+  if (count === 0) {
+    return "3個からお得なセット価格が適用されます";
+  }
+
+  const candidates = [];
+
+  // 5個セット＋3個セットのおすすめ構成
+  for (
+    let sets5 = 0;
+    sets5 <= Math.ceil((count + 5) / 5);
+    sets5++
+  ) {
+
+    for (let sets3 = 0; sets3 <= 1; sets3++) {
+
+      const target = sets5 * 5 + sets3 * 3;
+
+      if (target <= count) continue;
+
+      const parts = [];
+
+      if (sets5 > 0) {
+        parts.push(`5個セット×${sets5}`);
+      }
+
+      if (sets3 > 0) {
+        parts.push("3個セット×1");
+      }
+
+      candidates.push({
+        target,
+        label: parts.join("＋")
+      });
+    }
+  }
+
+  candidates.sort((a, b) => a.target - b.target);
+
+  const next = candidates[0];
+
+  if (!next) return "";
+
+  const remaining = next.target - count;
+
+  return `あと${remaining}個で${next.label}の組み合わせ！`;
+}
+
+
+/* =========================================
+   カート追加通知
+========================================= */
+
+let marinkToastTimer = null;
+
+function showMarinkCartToast(productName, quantity) {
+
+  let toast = document.getElementById(
+    "marinkCartToast"
+  );
+
+  if (!toast) {
+
+    toast = document.createElement("div");
+    toast.id = "marinkCartToast";
+    toast.className = "marink-cart-toast";
+    toast.setAttribute("role", "status");
+    toast.setAttribute("aria-live", "polite");
+
+    toast.innerHTML = `
+      <span class="marink-toast-icon"
+            aria-hidden="true">✓</span>
+
+      <div class="marink-toast-info">
+        <strong>カートに追加しました</strong>
+        <span class="marink-toast-detail"></span>
+        <small class="marink-toast-offer"></small>
+      </div>
+
+      <a href="cart.html" class="marink-toast-link">
+        カートを見る ›
+      </a>
+    `;
+
+    document.body.appendChild(toast);
+  }
+
+  toast.querySelector(
+    ".marink-toast-detail"
+  ).textContent = `${productName} × ${quantity}個`;
+
+  toast.querySelector(
+    ".marink-toast-offer"
+  ).textContent = getMarinkNextSetMessage();
+
+  clearTimeout(marinkToastTimer);
+
+  toast.classList.add("is-visible");
+
+  // カートアイコンを弾ませる
+  document
+    .querySelectorAll(".header-cart-button")
+    .forEach(button => {
+
+      button.classList.remove("marink-cart-bump");
+
+      // アニメーションを再スタート
+      void button.offsetWidth;
+
+      button.classList.add("marink-cart-bump");
+    });
+
+  marinkToastTimer = setTimeout(() => {
+    toast.classList.remove("is-visible");
+  }, 4000);
+}
+
+
+
+

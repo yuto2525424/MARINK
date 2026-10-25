@@ -1,3 +1,5 @@
+let marinkActiveCategory = "ALL";
+
 document.addEventListener(
   "DOMContentLoaded",
   () => {
@@ -9,9 +11,24 @@ document.addEventListener(
     );
 
     setupCartModal();
+// 検索するたびに一覧を更新
+document
+  .getElementById("keyholderSearch")
+  ?.addEventListener("input", () => {
+    renderKeyholders(marinkActiveCategory);
+  });
+
+// お気に入り表示の切り替え
+document
+  .getElementById("keyholderFavoritesOnly")
+  ?.addEventListener("change", () => {
+    renderKeyholders(marinkActiveCategory);
+  });
+
 
   }
 );
+
 
 
 
@@ -92,9 +109,9 @@ function renderCategories() {
           );
 
 
-          renderKeyholders(
-            category
-          );
+         marinkActiveCategory = category;
+
+renderKeyholders(category);
 
         }
       );
@@ -130,18 +147,40 @@ function renderKeyholders(
   if (!grid) return;
 
 
-  const items =
+  
+  const searchText = (
+    document.getElementById("keyholderSearch")?.value || ""
+  ).normalize("NFKC").trim().toLowerCase();
 
-    category === "ALL"
+  const favoritesOnly =
+    document.getElementById("keyholderFavoritesOnly")
+      ?.checked || false;
 
-      ? acrylicKeyholdersData
+  const favorites = getMarinkFavoriteIds();
 
-      : acrylicKeyholdersData
-          .filter(
-            item =>
-              item.category ===
-              category
-          );
+  const items = acrylicKeyholdersData.filter(item => {
+
+    const matchesCategory =
+      category === "ALL" ||
+      item.category === category;
+
+    const searchableText = [
+      item.name,
+      item.category,
+      item.seriesCode || ""
+    ].join(" ").normalize("NFKC").toLowerCase();
+
+    const matchesSearch =
+      searchableText.includes(searchText);
+
+    const matchesFavorite =
+      !favoritesOnly || favorites.includes(item.id);
+
+    return matchesCategory &&
+      matchesSearch &&
+      matchesFavorite;
+  });
+
 
 
   grid.innerHTML =
@@ -156,7 +195,17 @@ function renderKeyholders(
   }
 
 
-  items.forEach(item => {
+if (items.length === 0) {
+  grid.innerHTML = `
+    <div class="marink-search-empty">
+      該当する生き物が見つかりませんでした。
+    </div>
+  `;
+  return;
+}
+
+items.forEach(item => {
+
 
     const card =
       document.createElement(
@@ -336,8 +385,7 @@ function renderKeyholders(
       "card-cart-button";
 
 
-    cartButton.textContent =
-      "カートに入れる";
+cartButton.textContent = "カートに入れる";
 
 
     cartButton.addEventListener(
@@ -352,14 +400,62 @@ function renderKeyholders(
     );
 
 
-    card.appendChild(
-      detailLink
-    );
+   
+// お気に入りボタン
+const favoriteButton = document.createElement("button");
+
+favoriteButton.type = "button";
+
+const isFavorite = favorites.includes(item.id);
+
+favoriteButton.className =
+  `marink-favorite-button${isFavorite ? " is-active" : ""}`;
 
 
-    card.appendChild(
-      cartButton
-    );
+favoriteButton.innerHTML = `
+  <svg
+    viewBox="0 0 24 24"
+    width="22"
+    height="22"
+    aria-hidden="true"
+  >
+    <path
+      d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0
+         L12 5.67l-1.06-1.06
+         a5.5 5.5 0 0 0-7.78 7.78
+         l1.06 1.06L12 21.23
+         l7.78-7.78 1.06-1.06
+         a5.5 5.5 0 0 0 0-7.78Z"
+    ></path>
+  </svg>
+`;
+
+
+favoriteButton.setAttribute(
+  "aria-label",
+  `${item.name}をお気に入り${isFavorite ? "から解除" : "に追加"}`
+);
+
+favoriteButton.setAttribute(
+  "aria-pressed",
+  String(isFavorite)
+);
+
+favoriteButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+  toggleMarinkFavorite(item.id);
+  renderKeyholders(marinkActiveCategory);
+});
+
+  // 商品画像・商品名から詳細ページへ
+card.appendChild(detailLink);
+
+// お気に入りボタン
+card.appendChild(favoriteButton);
+
+// カートに入れるボタン
+card.appendChild(cartButton);
 
 
     grid.appendChild(
@@ -464,6 +560,31 @@ function openCartModal(product) {
     </p>
 
 
+
+<!-- 商品仕様の簡易案内 -->
+<div class="marink-quick-spec">
+
+  <p>
+    外寸約40 × 40mm・両面カラー印刷
+  </p>
+
+  <p>
+    裏面：名前入れ＋100円／学名入れ＋50円
+  </p>
+
+  <p>
+    送料：全国一律300円
+  </p>
+
+  <a href="product.html?id=${encodeURIComponent(product.id)}">
+    詳しい商品仕様を見る →
+  </a>
+
+</div>
+
+
+
+
     <div
       class="product-options"
       id="modalOptions"
@@ -512,9 +633,9 @@ function openCartModal(product) {
       class="modal-total-row"
     >
 
-      <span>
-        合計
-      </span>
+<span>
+  商品小計（割引前・送料別）
+</span>
 
       <strong
         id="modalTotal"
@@ -685,11 +806,10 @@ updateCartBadge();
 
 closeCartModal();
 
-
-        alert(
-          "カートに追加しました"
-        );
-
+showMarinkCartToast(
+  result.name,
+  result.quantity
+);
       }
     );
 

@@ -6,7 +6,7 @@
 
 // 価格
 const KEYHOLDER_BASE_PRICE = 349;
-const ENGRAVING_PRICE = 50;
+const ENGRAVING_PRICE = 100;
 const SCIENTIFIC_PRICE = 50;
 
 
@@ -277,14 +277,235 @@ const KEYHOLDER_EXISTING_IDS = {
    確認したものから追加する
 ========================================= */
 
+
+/* =========================================
+   MARINK 学名マスター
+   全134種類
+========================================= */
+
 const KEYHOLDER_SCIENTIFIC_NAMES = {
-  "シコクスズメダイ": "Chromis margaritifer",
-  "オヤビッチャ": "Abudefduf vaigiensis",
-  "アオハナテンジクダイ": "Ostorhinchus apogonoides",
+
+  // =====================================
+  // SMALL FISH 26種類
+  // =====================================
+
+  "ヤシャハゼ": "Stonogobiops yasha",
+  "ヒレナガネジリンボウ": "Stonogobiops nematodes",
+  "アケボノハゼ": "Nemateleotris decora",
+  "シコンハタタテハゼ": "Nemateleotris lavandula",
+  "ハタタテハゼ": "Nemateleotris magnifica",
+  "ニチリンダテハゼ": "Amblyeleotris randalli",
+  "ギンガハゼ": "Cryptocentrus cinctus",
+  "クビアカハゼ": "Amblyeleotris wheeleri",
+  "アカメハゼ": "Bryaninops natans",
+  "ホタテツノハゼ": "Flabelligobius sp.",
+  "ダテハゼ": "Amblyeleotris japonica",
+  "ネジリンボウ": "Stonogobiops xanthorhinica",
+  "ヤマブキハゼ": "Amblyeleotris guttata",
+  "ミジンベニハゼ": "Lubricogobius exiguus",
+  "クロユリハゼ": "Ptereleotris evides",
+  "オトメハゼ": "Valenciennea puellaris",
+  "アオギハゼ": "Trimma tevegae",
   "キツネメネジリンボウ": "Stonogobiops pentafasciata",
+  "ホムラハゼ": "Discordipinna griessingeri",
+  "モンツキカエルウオ": "Blenniella chrysospilos",
+  "ダンゴウオ": "Eumicrotremus awae",
+  "イッポンテグリ": "Dactylopus dactylopus",
+  "チンアナゴ": "Heteroconger hassi",
+  "ニシキアナゴ": "Gorgasia preclara",
+  "ニシキテグリ": "Synchiropus splendidus",
+  "デメニギス": "Macropinna microstoma",
+
+
+  // =====================================
+  // REEF FISH 37種類
+  // =====================================
+
+  "クダゴンベ": "Oxycirrhites typus",
+  "ソラスズメダイ": "Pomacentrus coelestis",
+  "アマミスズメダイ": "Chromis chrysura",
+  "セナキルリスズメダイ": "Chrysiptera starcki",
+  "ルリホシスズメダイ": "Plectroglyphidodon lacrymatus",
+  "ミスジリュウキュウスズメダイ": "Dascyllus aruanus",
+  "オヤビッチャ": "Abudefduf vaigiensis",
+  "シコクスズメダイ": "Chromis margaritifer",
+  "レモンスズメダイ": "Chrysiptera rex",
+  "ネンブツダイ": "Ostorhinchus semilineatus",
+  "クロホシイシモチ": "Ostorhinchus notatus",
+  "マンジュウイシモチ": "Sphaeramia nematoptera",
+  "アマノガワテンジクダイ": "Pterapogon kauderni",
+  "アオハナテンジクダイ": "Ostorhinchus apogonoides",
+  "オオスジイシモチ": "Ostorhinchus doederleini",
+  "ヤライイシモチ": "Cheilodipterus quinquelineatus",
+  "キンギョハナダイ": "Pseudanthias squamipinnis",
+  "アカオビハナダイ": "Pseudanthias rubrizonatus",
+
+  // REEF FISH 019〜025は登録対象外
+
   "ナンヨウハギ": "Paracanthurus hepatus",
-  "テングハギ": "Naso unicornis"
+  "キイロハギ": "Zebrasoma flavescens",
+  "テングハギ": "Naso unicornis",
+  "ウマヅラハギ": "Thamnaconus modestus",
+  "ウツボ": "Gymnothorax kidako",
+  "トラウツボ": "Enchelycore pardalis",
+  "ハナヒゲウツボ": "Rhinomuraena quaesita",
+  "カクレクマノミ": "Amphiprion ocellaris",
+  "ハマクマノミ": "Amphiprion frenatus",
+  "ユウゼン": "Chaetodon daedalma",
+  "タテジマキンチャクダイ": "Pomacanthus imperator",
+  "ツノダシ": "Zanclus cornutus",
+  "セミホウボウ": "Dactyloptena orientalis",
+  "ナンヨウツバメウオ": "Platax orbicularis",
+  "オジサン": "Parupeneus multifasciatus",
+  "アカヒメジ": "Mulloidichthys vanicolensis",
+  "ハリセンボン": "Diodon holocanthus",
+  "ミナミハコフグ幼魚": "Ostracion cubicus",
+  "カゴカキダイ": "Microcanthus strigatus",
+
+
+  // =====================================
+  // SEAHORSE & ALLIES 7種類
+  // =====================================
+
+  "ハチジョウタツ": "Hippocampus japapigu",
+  "イバラタツ": "Hippocampus histrix",
+  "タツノイトコ": "Acentronura gracilissima",
+  "ノコギリヨウジ": "Doryrhamphus japonicus",
+  "ニシキフウライウオ": "Solenostomus paradoxus",
+  "カミソリウオ": "Solenostomus cyanopterus",
+  "ウミテング": "Eurypegasus draconis",
+
+
+  // =====================================
+  // AMBUSH FISH 7種類
+  // =====================================
+
+  "イロカエルアンコウ": "Antennarius pictus",
+  "クマドリカエルアンコウ": "Antennarius maculatus",
+  "キアンコウ幼魚": "Lophius litulon",
+  "ミノカサゴ": "Pterois lunulata",
+  "ボロカサゴ": "Rhinopias frondosa",
+  "ハダカハオコゼ": "Taenianotus triacanthus",
+  "チョウチンアンコウ": "Himantolophus sagamius",
+
+
+  // =====================================
+  // SHARK 7種類
+  // =====================================
+
+  "ジンベエザメ": "Rhincodon typus",
+  "ホホジロザメ": "Carcharodon carcharias",
+  "アカシュモクザメ": "Sphyrna lewini",
+  "トラザメ": "Scyliorhinus torazame",
+  "イタチザメ": "Galeocerdo cuvier",
+  "ノコギリザメ": "Pristiophorus japonicus",
+  "ミツクリザメ": "Mitsukurina owstoni",
+
+
+  // =====================================
+  // RAY 2種類
+  // =====================================
+
+  "ナンヨウマンタ": "Mobula alfredi",
+  "アカエイ": "Hemitrygon akajei",
+
+
+  // =====================================
+  // LARGE FISH 5種類
+  // =====================================
+
+  "ロウニンアジ": "Caranx ignobilis",
+  "メガネモチノウオ": "Cheilinus undulatus",
+
+  // カジキ亜目：種名ではなく上位分類
+  "カジキ": "Xiphioidei",
+
+  "マンボウ": "Mola mola",
+
+  // 現生シーラカンスの属名
+  "シーラカンス": "Latimeria",
+
+
+  // =====================================
+  // SEA SLUG 13種類
+  // =====================================
+
+  "アオウミウシ": "Hypselodoris festiva",
+  "ウデフリツノザヤウミウシ": "Thecacera pacifica",
+  "シンデレラウミウシ": "Hypselodoris apolegma",
+  "ミゾレウミウシ": "Chromodoris willani",
+  "ミアミラウミウシ": "Miamira sinuata",
+  "ボブサンウミウシ": "Goniobranchus roboi",
+  "クロスジリュウグウウミウシ": "Nembrotha lineolata",
+  "サガミリュウグウウミウシ": "Tambja sagamiana",
+  "ムラサキウミコチョウ": "Sagaminopteron ornatum",
+  "ゴマフビロードウミウシ": "Jorunna parva",
+  "コンペイトウウミウシ": "Halgerda carlsoni",
+  "シロウサギウミウシ": "Verconia simplex",
+  "クリオネ": "Clione elegantissima",
+
+
+  // =====================================
+  // CRUSTACEAN 9種類
+  // =====================================
+
+  "フリソデエビ": "Hymenocera picta",
+  "ウミウシカクレエビ": "Zenopontonia rex",
+  "イソギンチャクモエビ": "Thor amboinensis",
+  "オトヒメエビ": "Stenopus hispidus",
+  "キンチャクガニ": "Lybia tessellata",
+  "ゼブラガニ": "Zebrida adamsii",
+  "モンハナシャコ": "Odontodactylus scyllarus",
+
+  // カラッパ属：種は未指定
+  "カラッパ": "Calappa sp.",
+
+  "オオグソクムシ": "Bathynomus doederleini",
+
+
+  // =====================================
+  // CEPHALOPOD 8種類
+  // =====================================
+
+  "ヒメイカ": "Idiosepius paradoxus",
+  "ミミイカ": "Euprymna morsei",
+  "アオリイカ": "Sepioteuthis lessoniana",
+  "ハナイカ": "Metasepia tullbergi",
+  "マダコ": "Octopus sinensis",
+  "ダイオウイカ": "Architeuthis dux",
+  "メンダコ": "Opisthoteuthis depressa",
+  "オウムガイ": "Nautilus pompilius",
+
+
+  // =====================================
+  // JELLY 9種類
+  // =====================================
+
+  "ミズクラゲ": "Aurelia coerulea",
+  "タコクラゲ": "Mastigias papua",
+  "アカクラゲ": "Chrysaora pacifica",
+  "カラージェリー": "Catostylus mosaicus",
+  "ハナガサクラゲ": "Olindias formosus",
+  "オワンクラゲ": "Aequorea coerulescens",
+  "サカサクラゲ": "Cassiopea andromeda",
+  "エチゼンクラゲ": "Nemopilema nomurai",
+  "カブトクラゲ": "Bolinopsis mikado",
+
+
+  // =====================================
+  // OTHER 4種類
+  // =====================================
+
+  "アカウミガメ": "Caretta caretta",
+
+  // イルカ科：種名ではなく上位分類
+  "イルカ": "Delphinidae",
+
+  "シャチ": "Orcinus orca",
+  "コツメカワウソ": "Aonyx cinereus"
+
 };
+
 
 
 /* =========================================
@@ -300,6 +521,7 @@ const KEYHOLDER_IMAGES = {
   // "SMALL FISH 001": "images/keyholders/yashahaze.png",
 
 };
+
 
 
 /* =========================================
@@ -329,6 +551,7 @@ const acrylicKeyholdersData =
         const image =
           KEYHOLDER_IMAGES[seriesCode] || "";
 
+
         return {
           id: id,
           seriesCode: seriesCode,
@@ -341,9 +564,9 @@ const acrylicKeyholdersData =
           priceLabel:
             `¥${KEYHOLDER_BASE_PRICE.toLocaleString()}`,
 
-          status: image
-            ? "準備中"
-            : "画像準備中",
+status: image
+  ? "画像登録済み"
+  : "画像準備中",
 
           image: image,
 
@@ -363,4 +586,18 @@ const acrylicKeyholdersData =
 console.log(
   "MARINK登録商品数:",
   acrylicKeyholdersData.length
+);
+
+
+
+console.log(
+  "学名登録数:",
+  Object.keys(KEYHOLDER_SCIENTIFIC_NAMES).length
+);
+
+console.log(
+  "学名未登録の商品:",
+  acrylicKeyholdersData.filter(
+    product => !KEYHOLDER_SCIENTIFIC_NAMES[product.name]
+  ).map(product => product.name)
 );

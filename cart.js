@@ -227,12 +227,58 @@ const price = getMarinkCartPricing();
 
 
 
+
 summary.innerHTML = `
+
+  <!-- セット購入案内 -->
+  <div class="marink-bundle-guide">
+
+    <div class="marink-bundle-guide-top">
+
+      <span class="marink-bundle-guide-icon">
+        🎁
+      </span>
+
+      <div class="marink-bundle-guide-text">
+
+        <strong>
+          ${escapeHTML(getMarinkNextSetMessage())}
+        </strong>
+
+        <p>
+          好きな生き物を自由に組み合わせられます
+        </p>
+
+      </div>
+
+    </div>
+
+    ${
+      price.discount > 0
+        ? `
+          <p class="marink-bundle-saving">
+            現在のセット割引で
+            ${formatYen(price.discount)}お得！
+          </p>
+        `
+        : ""
+    }
+
+    <a
+      href="acrylic-keyholders.html"
+      class="marink-bundle-add"
+    >
+      <span>生き物を追加する</span>
+      <span aria-hidden="true">→</span>
+    </a>
+
+  </div>
 
   <div class="cart-summary-row">
     <span>商品点数</span>
     <strong>${price.count}点</strong>
   </div>
+
 
  
   ${price.set5 > 0 ? `

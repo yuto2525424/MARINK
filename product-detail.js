@@ -138,13 +138,75 @@ function renderProductDetail() {
       </span>
 
 
-      <p
+          <p
         class="detail-description"
       >
         ${escapeHTML(
           product.description
         )}
       </p>
+
+
+
+<!-- 商品仕様 -->
+<section class="marink-product-spec">
+
+  <div class="marink-spec-heading">
+    <span>PRODUCT INFORMATION</span>
+    <h2>商品仕様・お届けについて</h2>
+  </div>
+
+  <dl class="marink-spec-list">
+
+    <div>
+      <dt>サイズ</dt>
+      <dd>外寸約40 × 40mm</dd>
+    </div>
+
+    <div>
+      <dt>印刷仕様</dt>
+      <dd>両面カラー印刷</dd>
+    </div>
+
+    <div>
+      <dt>裏面</dt>
+      <dd>白地にMARINKロゴ</dd>
+    </div>
+
+    <div>
+      <dt>追加オプション</dt>
+      <dd>
+        名前入れ（12文字以内）または学名入れ。
+        いずれも1個につき＋100円。
+      </dd>
+    </div>
+
+    <div>
+      <dt>セット価格</dt>
+      <dd>
+        3個999円・5個1,599円。
+        種類の組み合わせ自由。
+      </dd>
+    </div>
+
+    <div>
+      <dt>送料</dt>
+      <dd>全国一律300円／注文</dd>
+    </div>
+
+    <div>
+      <dt>発送目安</dt>
+      <dd>
+        通常、決済確認後3〜5日以内に発送。
+        遅延が見込まれる場合はご連絡します。
+      </dd>
+    </div>
+
+  </dl>
+
+</section>
+
+
 
 
       <div
@@ -195,9 +257,9 @@ function renderProductDetail() {
         class="modal-total-row"
       >
 
-        <span>
-          合計
-        </span>
+       <span>
+  商品小計（割引前・送料別）
+</span>
 
         <strong
           id="detailTotal"
@@ -355,14 +417,16 @@ function renderProductDetail() {
         if (!cartItem) return;
 
 
-        addCartItem(
-          cartItem
-        );
+       addCartItem(
+  cartItem
+);
 
+updateCartBadge();
 
-        alert(
-          "カートに追加しました"
-        );
+showMarinkCartToast(
+  cartItem.name,
+  cartItem.quantity
+);
 
       }
     );

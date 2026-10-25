@@ -2944,10 +2944,644 @@ img {
 }
 
 
+/* =========================================
+   MARINK カート追加トースト
+========================================= */
+
+.marink-cart-toast {
+  position: fixed;
+  z-index: 9999;
+
+  top: calc(75px + env(safe-area-inset-top));
+  left: 50%;
+
+  width: min(450px, calc(100% - 28px));
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 15px;
+
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 18px;
+
+  background: linear-gradient(
+    135deg,
+    #062f57,
+    #0a4775
+  );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 15px 40px rgba(3,31,58,0.28);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform:
+    translate(-50%, -18px) scale(0.97);
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0.25s ease;
+}
+
+
+/* 表示状態 */
+
+.marink-cart-toast.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  transform:
+    translate(-50%, 0) scale(1);
+}
+
+
+/* チェックアイコン */
+
+.marink-toast-icon {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: #167996;
+  color: white;
+
+  font-size: 23px;
+  font-weight: 800;
+}
+
+
+/* 商品名 */
+
+.marink-toast-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.marink-toast-info strong {
+  display: block;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.marink-toast-detail {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #c0d7e5;
+
+  font-size: 11px;
+  line-height: 1.5;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* カートへのリンク */
+
+.marink-toast-link {
+  flex-shrink: 0;
+
+  padding: 10px 11px;
+
+  border-radius: 9px;
+
+  background: rgba(255,255,255,0.12);
+
+  color: #ffffff;
+
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+
+/* 小さなスマホ向け */
+
+@media (max-width: 390px) {
+
+  .marink-cart-toast {
+    gap: 8px;
+    padding: 12px 10px;
+  }
+
+  .marink-toast-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 19px;
+  }
+
+  .marink-toast-info strong {
+    font-size: 11px;
+  }
+
+  .marink-toast-detail {
+    font-size: 10px;
+  }
+
+  .marink-toast-link {
+    padding: 8px;
+    font-size: 10px;
+  }
+}
+
+
+/* 動きを減らす設定を尊重 */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .marink-cart-toast {
+    transition: none;
+  }
+
+}
+
+/* =========================================
+   検索エリアをスマホアプリ風に
+========================================= */
+
+.marink-catalog-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+
+  margin-bottom: 16px;
+  padding: 14px;
+
+  border: 1px solid #d9e4ec;
+  border-radius: 20px;
+
+  background: #f7fafc;
+}
+
+.marink-tools-title {
+  min-width: 120px;
+}
+
+.marink-tools-label {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #0a88c2;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.marink-tools-title p {
+  margin: 0;
+
+  color: #062f57;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.marink-search-box {
+  position: relative;
+  flex: 1 1 280px;
+  min-width: 0;
+}
+
+.marink-search-box svg {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+
+  width: 18px;
+  height: 18px;
+
+  transform: translateY(-50%);
+
+  stroke: #7890a2;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#keyholderSearch {
+  width: 100%;
+  height: 48px;
+
+  padding: 0 16px 0 42px;
+
+  border: 1px solid #d2dde7;
+  border-radius: 999px;
+
+  background: #ffffff;
+
+  color: #062f57;
+  font-size: 14px;
+  font-weight: 600;
+
+  outline: none;
+  box-sizing: border-box;
+}
+
+#keyholderSearch::placeholder {
+  color: #8ba0b0;
+  font-weight: 500;
+}
+
+#keyholderSearch:focus {
+  border-color: #0a88c2;
+  box-shadow: 0 0 0 4px rgba(10, 136, 194, 0.12);
+}
+
+.marink-favorites-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  min-height: 48px;
+  padding: 0 16px;
+
+  border: 1px solid #d2dde7;
+  border-radius: 999px;
+
+  background: #ffffff;
+
+  color: #062f57;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+  user-select: none;
+}
+
+.marink-favorites-toggle input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+
+  accent-color: #062f57;
+}
+
+.marink-favorites-icon {
+  color: #ff5c8a;
+  font-size: 18px;
+  line-height: 1;
+}
+
+
+/* =========================================
+   お気に入りハートをアプリ風に
+========================================= */
+
+.shop-product-card {
+  position: relative;
+}
+
+.marink-favorite-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 5;
+
+  width: 42px;
+  height: 42px;
+
+  border: none;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.96);
+  color: #6f8191;
+
+  display: grid;
+  place-items: center;
+
+  box-shadow: 0 8px 20px rgba(8, 36, 63, 0.14);
+
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.marink-favorite-button svg {
+  width: 20px;
+  height: 20px;
+
+  stroke: currentColor;
+  stroke-width: 1.9;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.marink-favorite-button:active {
+  transform: scale(0.93);
+}
+
+.marink-favorite-button.is-active {
+  background: #fff1f6;
+  color: #ff5c8a;
+}
+
+.marink-favorite-button.is-active svg {
+  fill: currentColor;
+}
+
+@media (hover: hover) {
+  .marink-favorite-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(8, 36, 63, 0.18);
+  }
+}
+
+
+/* =========================================
+   スマホ向け微調整
+========================================= */
+
+@media (max-width: 768px) {
+  .marink-catalog-tools {
+    padding: 12px;
+    gap: 10px;
+    border-radius: 18px;
+  }
+
+  .marink-tools-title {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .marink-tools-title p {
+    font-size: 17px;
+  }
+
+  .marink-search-box {
+    width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .marink-favorites-toggle {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .marink-favorite-button {
+    top: 8px;
+    right: 8px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+
+/* MARINK お気に入りハート形状修正 */
+
+.marink-favorite-button svg {
+  display: block;
+  width: 22px;
+  height: 22px;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  overflow: visible;
+}
+
+/* お気に入り登録時 */
+.marink-favorite-button.is-active svg {
+  fill: #ff5c8a;
+  stroke: #ff5c8a;
+}
+
+/* スマホ4列表示 */
+@media (max-width: 600px) {
+  .marink-favorite-button svg {
+    width: 19px;
+    height: 19px;
+  }
+}
 
 
 
+/* =========================================
+   MARINK セット購入案内
+========================================= */
 
+.marink-bundle-guide {
+  margin-bottom: 20px;
+  padding: 16px;
+
+  border: 1px solid #cde4ed;
+  border-radius: 17px;
+
+  background: #f0f8fb;
+}
+
+.marink-bundle-guide-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.marink-bundle-guide-icon {
+  width: 43px;
+  height: 43px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 12px;
+  background: #dceef5;
+  font-size: 22px;
+}
+
+.marink-bundle-guide-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.marink-bundle-guide-text strong {
+  display: block;
+
+  color: #062f57;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.marink-bundle-guide-text p {
+  margin-top: 4px;
+
+  color: #587588;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.marink-bundle-saving {
+  margin-top: 12px;
+  padding: 9px 12px;
+
+  border-radius: 9px;
+  background: #dceef5;
+
+  color: #087ea4;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.marink-bundle-add {
+  margin-top: 13px;
+  padding-top: 13px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-top: 1px solid #cde4ed;
+
+  color: #087ea4;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+
+/* =========================================
+   商品詳細の仕様
+========================================= */
+
+.marink-product-spec {
+  margin: 20px 0;
+  padding: 16px;
+
+  border: 1px solid #dfe8ee;
+  border-radius: 17px;
+
+  background: #ffffff;
+}
+
+.marink-spec-heading {
+  margin-bottom: 12px;
+}
+
+.marink-spec-heading span {
+  display: block;
+
+  color: #078fbd;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.marink-spec-heading h2 {
+  margin-top: 4px;
+
+  color: #062f57;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.marink-spec-list {
+  margin: 0;
+}
+
+.marink-spec-list > div {
+  display: grid;
+  grid-template-columns: 110px minmax(0,1fr);
+
+  gap: 10px;
+  padding: 11px 0;
+
+  border-top: 1px solid #edf1f4;
+}
+
+.marink-spec-list dt {
+  color: #718391;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.marink-spec-list dd {
+  margin: 0;
+
+  color: #153249;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+
+/* =========================================
+   商品選択画面の簡易仕様
+========================================= */
+
+.marink-quick-spec {
+  margin: 10px 0 17px;
+  padding: 12px;
+
+  border-radius: 12px;
+  background: #f2f7fa;
+}
+
+.marink-quick-spec p {
+  margin: 0 0 5px;
+
+  color: #587588;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.marink-quick-spec a {
+  display: inline-block;
+  margin-top: 5px;
+
+  color: #078fbd;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+
+/* =========================================
+   小さなスマホへの対応
+========================================= */
+
+@media (max-width: 390px) {
+
+  .marink-bundle-guide {
+    padding: 12px;
+  }
+
+  .marink-bundle-guide-text strong {
+    font-size: 12px;
+  }
+
+  .marink-product-spec {
+    padding: 12px;
+  }
+
+  .marink-spec-list > div {
+    grid-template-columns: 85px minmax(0,1fr);
+    gap: 8px;
+  }
+
+}
 
 
 
