@@ -218,7 +218,21 @@ return;
     }
   );
 
+list.querySelectorAll(".cart-item-image img")
+  .forEach(img => {
 
+    img.addEventListener("error", () => {
+
+      const placeholder = document.createElement("div");
+
+      placeholder.className =
+        "keyholder-image-placeholder";
+
+      placeholder.textContent = "画像準備中";
+
+      img.replaceWith(placeholder);
+    });
+  });
   setupCartButtons();
 
 

@@ -52,16 +52,16 @@ function speciesLines(text) {
    商品ラインナップ
 ========================================= */
 
+
 const KEYHOLDER_GROUPS = [
 
-  // SMALL FISH 001〜026
+  // SMALL FISH 001〜024
   ["SMALL FISH", "sf", 1, speciesLines(`
 ヤシャハゼ
 ヒレナガネジリンボウ
 アケボノハゼ
 シコンハタタテハゼ
 ハタタテハゼ
-ニチリンダテハゼ
 ギンガハゼ
 クビアカハゼ
 アカメハゼ
@@ -72,7 +72,6 @@ const KEYHOLDER_GROUPS = [
 ミジンベニハゼ
 クロユリハゼ
 オトメハゼ
-アオギハゼ
 キツネメネジリンボウ
 ホムラハゼ
 モンツキカエルウオ
@@ -84,8 +83,7 @@ const KEYHOLDER_GROUPS = [
 デメニギス
   `)],
 
-
-  // REEF FISH 001〜018
+  // REEF FISH 001〜046
   ["REEF FISH", "rf", 1, speciesLines(`
 クダゴンベ
 ソラスズメダイ
@@ -105,15 +103,11 @@ const KEYHOLDER_GROUPS = [
 ヤライイシモチ
 キンギョハナダイ
 アカオビハナダイ
-  `)],
-
-
-  // REEF FISH 019〜025
-  // 一時除外：画像の販売利用を確認するまで欠番
-
-
-  // REEF FISH 026〜044
-  ["REEF FISH", "rf", 26, speciesLines(`
+ハナゴイ
+マダラハナダイ
+フタイロハナゴイ
+オシャレハナダイ
+ニラミハナダイ
 ナンヨウハギ
 キイロハギ
 テングハギ
@@ -133,8 +127,11 @@ const KEYHOLDER_GROUPS = [
 ハリセンボン
 ミナミハコフグ幼魚
 カゴカキダイ
+アカククリ
+ミヤコキセンスズメダイ
+ホウボウ
+ホンソメワケベラ
   `)],
-
 
   // SEAHORSE & ALLIES 001〜007
   ["SEAHORSE & ALLIES", "sa", 1, speciesLines(`
@@ -147,7 +144,6 @@ const KEYHOLDER_GROUPS = [
 ウミテング
   `)],
 
-
   // AMBUSH FISH 001〜007
   ["AMBUSH FISH", "af", 1, speciesLines(`
 イロカエルアンコウ
@@ -159,8 +155,7 @@ const KEYHOLDER_GROUPS = [
 チョウチンアンコウ
   `)],
 
-
-  // SHARK 001〜007
+  // SHARK 001〜006
   ["SHARK", "sh", 1, speciesLines(`
 ジンベエザメ
 ホホジロザメ
@@ -168,9 +163,13 @@ const KEYHOLDER_GROUPS = [
 トラザメ
 イタチザメ
 ノコギリザメ
-ミツクリザメ
   `)],
 
+  // SHARK 007は欠番
+  // SHARK 008
+  ["SHARK", "sh", 8, speciesLines(`
+ラブカ
+  `)],
 
   // RAY 001〜002
   ["RAY", "ra", 1, speciesLines(`
@@ -178,16 +177,15 @@ const KEYHOLDER_GROUPS = [
 アカエイ
   `)],
 
-
-  // LARGE FISH 001〜005
+  // LARGE FISH 001〜006
   ["LARGE FISH", "lf", 1, speciesLines(`
 ロウニンアジ
 メガネモチノウオ
 カジキ
 マンボウ
 シーラカンス
+リュウグウノツカイ
   `)],
-
 
   // SEA SLUG 001〜013
   ["SEA SLUG", "ss", 1, speciesLines(`
@@ -206,7 +204,6 @@ const KEYHOLDER_GROUPS = [
 クリオネ
   `)],
 
-
   // CRUSTACEAN 001〜009
   ["CRUSTACEAN", "cr", 1, speciesLines(`
 フリソデエビ
@@ -220,7 +217,6 @@ const KEYHOLDER_GROUPS = [
 オオグソクムシ
   `)],
 
-
   // CEPHALOPOD 001〜008
   ["CEPHALOPOD", "ce", 1, speciesLines(`
 ヒメイカ
@@ -232,7 +228,6 @@ const KEYHOLDER_GROUPS = [
 メンダコ
 オウムガイ
   `)],
-
 
   // JELLY 001〜009
   ["JELLY", "je", 1, speciesLines(`
@@ -247,15 +242,19 @@ const KEYHOLDER_GROUPS = [
 カブトクラゲ
   `)],
 
-
-  // OTHER 001〜004
+  // OTHER 001〜003
   ["OTHER", "ot", 1, speciesLines(`
-アカウミガメ
-イルカ
 シャチ
 コツメカワウソ
+イルカ
   `)]
+
 ];
+
+
+
+
+
 
 
 /* =========================================
@@ -294,7 +293,7 @@ const KEYHOLDER_SCIENTIFIC_NAMES = {
   "アケボノハゼ": "Nemateleotris decora",
   "シコンハタタテハゼ": "Nemateleotris lavandula",
   "ハタタテハゼ": "Nemateleotris magnifica",
-  "ニチリンダテハゼ": "Amblyeleotris randalli",
+ 
   "ギンガハゼ": "Cryptocentrus cinctus",
   "クビアカハゼ": "Amblyeleotris wheeleri",
   "アカメハゼ": "Bryaninops natans",
@@ -305,7 +304,7 @@ const KEYHOLDER_SCIENTIFIC_NAMES = {
   "ミジンベニハゼ": "Lubricogobius exiguus",
   "クロユリハゼ": "Ptereleotris evides",
   "オトメハゼ": "Valenciennea puellaris",
-  "アオギハゼ": "Trimma tevegae",
+ 
   "キツネメネジリンボウ": "Stonogobiops pentafasciata",
   "ホムラハゼ": "Discordipinna griessingeri",
   "モンツキカエルウオ": "Blenniella chrysospilos",
@@ -339,9 +338,11 @@ const KEYHOLDER_SCIENTIFIC_NAMES = {
   "ヤライイシモチ": "Cheilodipterus quinquelineatus",
   "キンギョハナダイ": "Pseudanthias squamipinnis",
   "アカオビハナダイ": "Pseudanthias rubrizonatus",
-
-  // REEF FISH 019〜025は登録対象外
-
+"ハナゴイ": "Mirolabrichthys pascalus",
+"マダラハナダイ": "Odontanthias borbonius",
+"フタイロハナゴイ": "Nemanthias bicolor",
+"オシャレハナダイ": "Poroanthias pelicieri",
+"ニラミハナダイ": "Compsanthias ventralis",
   "ナンヨウハギ": "Paracanthurus hepatus",
   "キイロハギ": "Zebrasoma flavescens",
   "テングハギ": "Naso unicornis",
@@ -361,6 +362,10 @@ const KEYHOLDER_SCIENTIFIC_NAMES = {
   "ハリセンボン": "Diodon holocanthus",
   "ミナミハコフグ幼魚": "Ostracion cubicus",
   "カゴカキダイ": "Microcanthus strigatus",
+"アカククリ": "Platax pinnatus",
+"ミヤコキセンスズメダイ": "Chrysiptera brownriggii",
+"ホウボウ": "Chelidonichthys spinosus",
+"ホンソメワケベラ": "Labroides dimidiatus",
 
 
   // =====================================
@@ -399,7 +404,7 @@ const KEYHOLDER_SCIENTIFIC_NAMES = {
   "トラザメ": "Scyliorhinus torazame",
   "イタチザメ": "Galeocerdo cuvier",
   "ノコギリザメ": "Pristiophorus japonicus",
-  "ミツクリザメ": "Mitsukurina owstoni",
+ "ラブカ": "Chlamydoselachus anguineus",
 
 
   // =====================================
@@ -423,7 +428,8 @@ const KEYHOLDER_SCIENTIFIC_NAMES = {
   "マンボウ": "Mola mola",
 
   // 現生シーラカンスの属名
-  "シーラカンス": "Latimeria",
+ "シーラカンス": "Latimeria",
+"リュウグウノツカイ": "Regalecus russellii",
 
 
   // =====================================
@@ -496,7 +502,7 @@ const KEYHOLDER_SCIENTIFIC_NAMES = {
   // OTHER 4種類
   // =====================================
 
-  "アカウミガメ": "Caretta caretta",
+  
 
   // イルカ科：種名ではなく上位分類
   "イルカ": "Delphinidae",
@@ -508,19 +514,6 @@ const KEYHOLDER_SCIENTIFIC_NAMES = {
 
 
 
-/* =========================================
-   商品画像
-   現時点ではすべて未登録
-========================================= */
-
-const KEYHOLDER_IMAGES = {
-
-  // 画像追加時にここへ書く
-
-  // 例：
-  // "SMALL FISH 001": "images/keyholders/yashahaze.png",
-
-};
 
 
 
@@ -548,8 +541,27 @@ const acrylicKeyholdersData =
         const scientificName =
           KEYHOLDER_SCIENTIFIC_NAMES[name] || "";
 
-        const image =
-          KEYHOLDER_IMAGES[seriesCode] || "";
+       
+const imageBase =
+  `images/keyholders/${prefix}${number}`;
+
+const image = `${imageBase}-front.png`;
+
+const images = [
+  {
+    src: `${imageBase}-front.png`,
+    label: "表面"
+  },
+  {
+    src: `${imageBase}-back.png`,
+    label: "裏面"
+  },
+  {
+    src: `${imageBase}-extra.png`,
+    label: "追加写真"
+  }
+];
+
 
 
         return {
@@ -564,11 +576,10 @@ const acrylicKeyholdersData =
           priceLabel:
             `¥${KEYHOLDER_BASE_PRICE.toLocaleString()}`,
 
-status: image
-  ? "画像登録済み"
-  : "画像準備中",
+status: "MARINK ORIGINAL",
 
-          image: image,
+image: image,
+images: images,
 
           description:
             `${name}をモチーフにしたMARINKオリジナルアクリルキーホルダー。`,
